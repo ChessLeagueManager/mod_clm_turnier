@@ -1,7 +1,9 @@
 <?php
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-if(!defined("DS")){define('DS', DIRECTORY_SEPARATOR);} // fix for Joomla 3.2
+
+// Konfiguration wird benötigt
+require_once (JPATH_SITE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_clm" . DIRECTORY_SEPARATOR . "clm" . DIRECTORY_SEPARATOR . "index.php");
 
 // Include the syndicate functions only once
 require_once (dirname(__FILE__).DIRECTORY_SEPARATOR.'helper.php');
@@ -22,12 +24,13 @@ $param['linkmatchescomplete'] = $params->get('linkmatchescomplete', 0);
 $param['linktable'] = $params->get('linktable', 0);
 $param['linkrankingscore'] = $params->get('linkrankingscore', 0);
 $param['textrankingscore'] = $params->get('textrankingscore', '');
+$param['linkdwz'] = $params->get('linkdwz', 0);
 
 $param['shownotes'] = $params->get('shownotes', 0);
 $param['linkinvitation'] = $params->get('linkinvitation', 0);
-$param['link_nat_rating'] = $params->get('link_nat_rating', 0);
 $param['contentid'] = $params->get('contentid', '');
 $param['textbottom'] = $params->get('textbottom', '');
+$param['itemid'] = $params->get('itemid', '');
 
 $arrayTurniere_object=array();
 // CategoryID vorgegeben?
@@ -151,4 +154,4 @@ if (count($arrayTurniere) > 0) {
 
 
 ?>
- 
+

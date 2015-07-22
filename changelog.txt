@@ -1,4 +1,4 @@
-CHANGELOG mod_clm_turnier J2.5
+CHANGELOG mod_clm_turnier
 ------------
 
 Legend:
@@ -12,11 +12,25 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
-- - - - - 1.0.5 - [31-03-2015] - - - - - - - - - - - - - - - - - - - -
-+ Link zur inoff. DWZ-Auswertung
+- - - - - 3.0.8 - [22-05-2015] - - - - - - - - - - - - - - - - - - - -
+^ CLM Klassen können nun direkt aufgerufen werden
 
-- - - - - 1.0.4 - [29-01-2015] - - - - - - - - - - - - - - - - - - - -
+- - - - - 3.0.7 - [04-04-2015] - - - - - - - - - - - - - - - - - - - -
+^ itemid nun überschreibbar
+
+- - - - - 3.0.6 - [03-02-2015] - - - - - - - - - - - - - - - - - - - -
 # Nur veröffentlichte Turniere werden zur Einzelauswahl angeboten
+
+- - - - - 3.0.5 - [23-01-2015] - - - - - - - - - - - - - - - - - - - -
+^ Konfigurationsmöglichkeiten in "Erweitert" vergrößert
+
+- - - - - 3.0.4 - [22-01-2015] - - - - - - - - - - - - - - - - - - - -
+! Vermeidung gleicher Versionsnummern in verschiedenen CLM Versionen
+# $params wurde ungünstig überschrieben
+
+- - - - - 1.0.4 - [21-01-2015] - - - - - - - - - - - - - - - - - - - -
+^ Link auf die inof. DWZ falls berechnet
+- Support für 1.5.x
 
 - - - - - 1.0.3 - [16-01-2015] - - - - - - - - - - - - - - - - - - - -
 # Nur veröffentlichte Turniere innerhalb der Kategorie werden aufgelistet

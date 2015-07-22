@@ -37,27 +37,27 @@ foreach ($turData as $value) {
 	// Link je nach ParameterEinstellung setzen
 	switch($params->get('namelinksto', 0)) {
 		case 3: // Paarungstafel
-			echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 2: // alle Partien
-			echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 1: // Runde 1
 			// TODO: Rundenname
-			echo modCLM_TurnierHelper::makeLink('turnier_runde', $value->id, array("runde=1"), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_runde', $value->id, array("runde=1"), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 0: // TlnLIste
-			echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 5: // Ausschreibung
-			echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array(), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 6: // Tabelle
-			echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 		case 4: // Turnier-Info
 		default:
-			echo modCLM_TurnierHelper::makeLink('turnier_info', $value->id, array(), $value->name, $view, $turnierid);
+			echo modCLM_TurnierHelper::makeLink('turnier_info', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
 	}
 	
@@ -72,25 +72,25 @@ foreach ($turData as $value) {
 				
 				// Teilnehmerliste
 				if ($param['linkplayerslist'] == 1) {
-					echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), JText::_('PLAYERSLIST'), $view, $turnierid);
+					echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), JText::_('PLAYERSLIST'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Runden
 				if ($param['linkroundseach'] == 1) {
 					// alle ausgelesenen Runden durchgehen
 					foreach ($turRounds[$value->id] as $round) {
-						echo modCLM_TurnierHelper::makeLink('turnier_runde', $value->id, array("runde=".$round->nr,"dg=".$round->dg), $round->name, $view, $turnierid);
+						echo modCLM_TurnierHelper::makeLink('turnier_runde', $value->id, array("runde=".$round->nr,"dg=".$round->dg), $round->name, $view, $turnierid, $param['itemid']);
 					}
 				}
 				
 				// alle Matches
 				if ($param['linkmatchescomplete'] == 1) {
-					echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), JText::_('MATCHESCOMPLETE'), $view, $turnierid);
+					echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), JText::_('MATCHESCOMPLETE'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Tabelle
 				if ($param['linktable'] == 1 AND $value->typ != 3) {
-					echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), JText::_('TABLE'), $view, $turnierid);
+					echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), JText::_('TABLE'), $view, $turnierid, $param['itemid']);
 				}
 				
 				
@@ -103,17 +103,24 @@ foreach ($turData as $value) {
 					} elseif ($value->typ == 2) {
 						$text = JText::_('SCOREBOARD');
 					}
-					echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $text, $view, $turnierid);
+					echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $text, $view, $turnierid, $param['itemid']);
 				}
 		
-				// DWZ Auswertung
-				if ($param['link_nat_rating'] == 1 AND $value->typ != 3) {
-					echo modCLM_TurnierHelper::makeLink('turnier_dwz', $value->id, array(), JText::_('NAT_RATING'), $view, $turnierid);
+				// Inof. DWZ
+				if ($param['linkdwz'] == 1) {
+
+					$table = clm_core::$db->turniere->get($turnierid);
+					if(!$table->isNew()) {
+						$parameter = new clm_class_params($table->params);
+						if($parameter->get("inofDWZ","0") == 1) {
+							echo modCLM_TurnierHelper::makeLink('turnier_dwz', $value->id, array(), JText::_('DWZ'), $view, $turnierid, $param['itemid']);
+						}
+					}
 				}
 
 				// Ausschreibung
 				if ($param['linkinvitation'] == 1 AND $value->invitationLength > 0) {
-					echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array($str_rsorderby), JText::_('INVITATION'), $view, $turnierid);
+					echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array($str_rsorderby), JText::_('INVITATION'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Bemerkungen
@@ -159,5 +166,3 @@ if ($param['textbottom'] != '') {
 
 
 </ul>
-
-

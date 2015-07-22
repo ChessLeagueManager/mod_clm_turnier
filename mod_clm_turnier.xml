@@ -2,12 +2,12 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Turnier</name>
 	<author>Helge Frowein</author>
-	<creationDate>31.03.2015</creationDate>
+	<creationDate>22.05.2015</creationDate>
 	<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>helge-frowein@online.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>1.0.5</version>
+	<version>3.0.8</version>
 	<description>CLM_MODULE_TURNIER_DESCRIPTION</description>
 
 	<files>
@@ -74,16 +74,17 @@
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="linkdwz" type="radio" default="1" label="LINKDWZ" description="LINKDWZ_DESC">
+					<option value="0">JNO</option>
+					<option value="1">DWZYES</option>
+				</field>
 				<field name="textrankingscore" type="text" default="" label="TEXTRANKINGSCORE" description="TEXTRANKINGSCORE_DESC"/>
 				<field name="rankingscoreorderby" type="radio" default="1" label="RANKINGSCOREORDERBY" description="RANKINGSCOREORDERBY_DESC">
 					<option value="1">RANKINGSCOREORDERBY_1</option>
 					<option value="2">RANKINGSCOREORDERBY_2</option>
 				</field>
 				<field name="@spacer" type="spacer" default="" label="" description="" />
-				<field name="link_nat_rating" type="radio" default="0" label="LINK_NAT_RATING" description="LINK_NAT_RATING_DESC">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
 				<field name="linkinvitation" type="radio" default="0" label="LINKINVITATION" description="LINKINVITATION_DESC">
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
@@ -100,16 +101,53 @@
 				<field name="contenttext" type="text" default="" label="CONTENTTEXT" description="CONTENTTEXT_DESC"/>
 				<field name="@spacer" type="spacer" default="" label="" description="" />
 				<field name="textbottom" type="textarea" rows="3" cols="50" default="" label="TEXTBOTTOM" description="TEXTBOTTOM_DESC" />
+				<field name="itemid" type="text" default="" label="ITEMID" description="ITEMID_DESC"/>
 			</fieldset>
+
+			<fieldset name="advanced">
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+
+
+                <field
+                    name="moduleclass_sfx"
+                    type="text"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+                <field
+                    name="cache"
+                    type="list"
+                    default="1"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                        value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option
+                        value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field
+                    name="cache_time"
+                    type="text"
+                    default="900"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+                <field
+                    name="cachemode"
+                    type="hidden"
+                    default="itemid">
+                    <option
+                        value="itemid"></option>
+                </field>
+
+            </fieldset>			
 			
-			<fieldset name="design" label="PARAMS_DESIGN">
-				<field
-						name="moduleclass_sfx"
-						type="text"
-						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				
-			</fieldset>
 		</fields>
 	</config>
 	

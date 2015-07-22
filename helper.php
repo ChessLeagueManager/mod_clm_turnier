@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 
 class modCLM_TurnierHelper {
 	
-	public static function makeLink($gotoView, $gotoID, $param = array(), $name, $currentView, $currentID) {
+	public static function makeLink($gotoView, $gotoID, $param = array(), $name, $currentView, $currentID, $itemid) {
 	
 		// current?
 		$flagActive = false;
@@ -46,7 +46,9 @@ class modCLM_TurnierHelper {
 		}
 	
 		// itemid
-		$itemid = JFactory::getApplication()->input->get('Itemid'); // JRequest::getVar('Itemid');
+		if($itemid == '' || !is_numeric($itemid)) {
+			$itemid = JFactory::getApplication()->input->get('Itemid'); // JRequest::getVar('Itemid');
+		}
 		$url .= '&amp;Itemid='.$itemid;
 	
 		// zusammensetzen
