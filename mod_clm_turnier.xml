@@ -2,26 +2,22 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Turnier</name>
 	<author>Helge Frowein</author>
-	<creationDate>22.05.2015</creationDate>
+	<creationDate>01.11.2016</creationDate>
 	<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>helge-frowein@online.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>3.0.8</version>
+	<version>3.1.0</version>
 	<description>CLM_MODULE_TURNIER_DESCRIPTION</description>
 
 	<files>
 		<filename module="mod_clm_turnier">mod_clm_turnier.php</filename>
 		<filename>index.html</filename>
 		<filename>helper.php</filename>
+		<filename>changelog.txt</filename>
 		<folder>tmpl/</folder>
 		<folder>language/</folder>
 	</files>
-	
-	<languages folder="language">
-		<language tag="de-DE">de-DE/de-DE.mod_clm_turnier.sys.ini</language>
-		<language tag="de-DE">de-DE/de-DE.mod_clm_turnier.ini</language>
-	</languages>
 	
 	<config>
 		<fields name="params">
