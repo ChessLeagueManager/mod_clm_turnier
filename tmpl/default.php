@@ -100,7 +100,7 @@ foreach ($turData as $value) {
 						$text = $value->stringRankingScore;
 					} elseif ($value->typ == 1) {
 						$text = JText::_('RANKING');
-					} elseif ($value->typ == 2) {
+					} elseif ($value->typ > 1) {
 						$text = JText::_('SCOREBOARD');
 					}
 					echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $text, $view, $turnierid, $param['itemid']);
