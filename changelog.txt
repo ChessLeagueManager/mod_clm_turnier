@@ -12,6 +12,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 3.2.0 - [05-12-2021] - - - - - - - - - - - - - - - - - - - -
+^ Code-Anpassung php 8.0
+
 - - - - - 3.1.1 - [29-03-2017] - - - - - - - - - - - - - - - - - - - -
 # freies System
 
