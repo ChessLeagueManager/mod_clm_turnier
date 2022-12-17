@@ -12,6 +12,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.0.0 - [23-09-2022] - - - - - - - - - - - - - - - - - - - -
++ Sortierung der Turniere nach Ordering + ID
+
 - - - - - 3.2.0 - [05-12-2021] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung php 8.0
 
