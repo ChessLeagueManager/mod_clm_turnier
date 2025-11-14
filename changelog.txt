@@ -12,6 +12,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 4.3.0 - [23-09-2025] - - - - - - - - - - - - - - - - - - - -
++ Zusätzlicher Parameter Saison
+
 - - - - - 4.0.1 - [09-04-2024] - - - - - - - - - - - - - - - - - - - -
 ^ Code-Anpassung Joomla 4.4.1: Aufbau der Sprachdateien
 

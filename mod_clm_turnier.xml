@@ -2,12 +2,12 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
 	<name>CLM Modul Turnier</name>
 	<author>Helge Frowein</author>
-	<creationDate>09.04.2024</creationDate>
+	<creationDate>23.09.2025</creationDate>
 	<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>helge-frowein@online.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>4.0.1</version>
+	<version>4.3.0</version>
 	<description>CLM_MODULE_TURNIER_DESCRIPTION</description>
 
 	<files>
@@ -22,7 +22,10 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic" label="PARAMS_BASIC">
-				<field name="categoryid" type="sql" default="0" label="CATEGORY" description="CATEGORY_DESC" query="SELECT id AS value, name AS categoryid FROM #__clm_categories ORDER BY ordering">
+				<field name="categoryid" type="sql" default="0" label="CATEGORY" description="CATEGORY_DESC" query="SELECT id AS value, name AS categoryid FROM #__clm_categories WHERE published = 1 ORDER BY ordering">
+					<option value="0">PARAMETER_SELECT</option>
+				</field>
+				<field name="seasonid" type="sql" default="0" label="SEASON" description="SEASON_DESC" query="SELECT id AS value, name AS seasonid FROM #__clm_saison WHERE published = 1 ORDER BY ordering">
 					<option value="0">PARAMETER_SELECT</option>
 				</field>
 				<field name="turnierid" type="sql" default="0" label="TOURNAMENTS" description="TOURNAMENTS_DESC" query="SELECT id AS value, name AS turnierid FROM #__clm_turniere WHERE published = 1 ORDER BY ordering" multiple="multiple">

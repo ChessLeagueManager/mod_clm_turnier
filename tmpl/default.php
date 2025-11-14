@@ -1,4 +1,11 @@
-<?php // no direct access
+<?php
+/**
+ * @ Chess League Manager (CLM) Turnier Modul 
+ * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ * @link http://www.chessleaguemanager.de
+*/
+// no direct access
 defined('_JEXEC') or die('Restricted access'); 
 jimport( 'joomla.html.parameter' );
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Turnier Modul 
- * @Copyright (C) 2008-2022 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link http://www.chessleaguemanager.de
 */
@@ -21,6 +21,7 @@ $db  = JFactory::getDBO();
 
 // Modul-Parameter
 $param['categoryid'] = $params->get('categoryid', '');
+$param['seasonid'] = $params->get('seasonid', '');
 $param['turnierid'] = $params->get('turnierid', array());
 
 $param['linkplayerslist'] = $params->get('linkplayerslist', 1);
@@ -59,11 +60,27 @@ if ($param['categoryid'] != '' AND $param['categoryid'] > 0) {
 	// zugewiesene Turniere
 	$query = 'SELECT id'
 				. ' FROM #__clm_turniere'
-				. ' WHERE '.$addWhere
-				. ' AND published=1 ORDER BY ordering'
-				;
+				. ' WHERE '.$addWhere;
+	// SeasonID zusätzlich vorgegeben?
+	if ($param['seasonid'] != '' AND $param['seasonid'] > 0) {
+		$query .= ' AND sid='.$param['seasonid'];
+	}
+	$query .= ' AND published=1 ORDER BY ordering';
+				
 	$db->setQuery($query);
 	$arrayTurniere_object = $db->loadObjectList(); // loadResultArray funktioniert anscheinend nicht in 3.2
+} else {
+	// nur SeasonID zusätzlich vorgegeben?
+	if ($param['seasonid'] != '' AND $param['seasonid'] > 0) {
+		// zugewiesene Turniere
+		$query = 'SELECT id'
+				. ' FROM #__clm_turniere'
+				. ' WHERE sid='.$param['seasonid']
+				. ' AND published=1 ORDER BY ordering';
+				
+	$db->setQuery($query);
+	$arrayTurniere_object = $db->loadObjectList(); // loadResultArray funktioniert anscheinend nicht in 3.2
+	}
 }
 
 
