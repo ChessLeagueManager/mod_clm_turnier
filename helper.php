@@ -1,12 +1,15 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Turnier Modul 
- * @Copyright (C) 2008-2021 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
 */
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Router\Route;
 
 class modCLM_TurnierHelper {
 	
@@ -19,8 +22,8 @@ class modCLM_TurnierHelper {
 			// bei turnier_runde muß die gewählte Runde ebenfalls geprüft werden
 			if ($gotoView == 'turnier_runde') {
 				// aktuell angezeigte/ausgewählte Runde
-				$runde = JFactory::getApplication()->input->get('runde', 0);
-				$dg = JFactory::getApplication()->input->get('dg', 0);
+				$runde = Factory::getApplication()->input->get('runde', 0);
+				$dg = Factory::getApplication()->input->get('dg', 0);
 				if ($param[0] == 'runde='.$runde AND $param[1] == 'dg='.$dg) {
 					$liTag = '<li id="current" class="active" >';
 					$class = ' class="active_link"';
@@ -54,12 +57,12 @@ class modCLM_TurnierHelper {
 	
 		// itemid
 		if($itemid == '' || !is_numeric($itemid)) {
-			$itemid = JFactory::getApplication()->input->get('Itemid'); // JRequest::getVar('Itemid');
+			$itemid = Factory::getApplication()->input->get('Itemid'); // JRequest::getVar('Itemid');
 		}
 		$url .= '&amp;Itemid='.$itemid;
 	
 		// zusammensetzen
-		$tag = $liTag.'<span><a href="'.JRoute::_($url).'"'.$class.'>'.$name.'</a></span>';
+		$tag = $liTag.'<span><a href="'.Route::_($url).'"'.$class.'>'.$name.'</a></span>';
 		
 		return $tag;
 	
@@ -69,7 +72,7 @@ class modCLM_TurnierHelper {
 	public static function getTree() {
 	
 		// DB
-		$_db				=  JFactory::getDBO();
+		$_db				=  Factory::getDBO();
 	
 		// alle Cats holen
 		$query = "SELECT id, name, parentid FROM #__clm_categories";

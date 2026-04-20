@@ -1,12 +1,15 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Turnier Modul 
- * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
 */
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ModuleHelper;
 
 // Konfiguration wird benötigt
 require_once (JPATH_SITE . DIRECTORY_SEPARATOR . "components" . DIRECTORY_SEPARATOR . "com_clm" . DIRECTORY_SEPARATOR . "clm" . DIRECTORY_SEPARATOR . "index.php");
@@ -16,7 +19,7 @@ require_once (dirname(__FILE__).DIRECTORY_SEPARATOR.'helper.php');
 
 
 // INIT
-$db  = JFactory::getDBO();
+$db  = Factory::getDBO();
 
 
 // Modul-Parameter
@@ -182,7 +185,7 @@ if (count($arrayTurniere) > 0) {
 	
 	if ($counter > 0) {
 		// nur dann Anzeige
-		require(JModuleHelper::getLayoutPath('mod_clm_turnier'));
+		require(ModuleHelper::getLayoutPath('mod_clm_turnier'));
 	}
 
 

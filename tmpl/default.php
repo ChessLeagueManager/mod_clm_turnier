@@ -1,28 +1,31 @@
 <?php
 /**
  * @ Chess League Manager (CLM) Turnier Modul 
- * @Copyright (C) 2008-2025 CLM Team.  All rights reserved
+ * @Copyright (C) 2008-2026 CLM Team.  All rights reserved
  * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
- * @link http://www.chessleaguemanager.de
+ * @link https://chessleaguemanager.org
 */
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 jimport( 'joomla.html.parameter' );
 
 // Parameter
 
 // aktueller View 
 // $view	= JRequest::getVar( 'view' );
-$view = JFactory::getApplication()->input->get('view');
+$view = Factory::getApplication()->input->get('view');
 
 // aktuell angezeigtes/ausgewähltes Turnier
 // $turnierid = JRequest::getInt('turnier', 0);
-$turnierid = JFactory::getApplication()->input->get('turnier', 0);
+$turnierid = Factory::getApplication()->input->get('turnier', 0);
 
 // item
 // $itemid	= JRequest::getVar( 'Itemid' );
-// $itemid = JFactory::getApplication()->input->get('Itemid');
-
+// $itemid = Factory::getApplication()->input->get('Itemid');
 
 $rankingscoreorderby = $params->get('rankingscoreorderby', 1);
 if ($rankingscoreorderby == 1) {
@@ -79,7 +82,7 @@ foreach ($turData as $value) {
 				
 				// Teilnehmerliste
 				if ($param['linkplayerslist'] == 1) {
-					echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), JText::_('PLAYERSLIST'), $view, $turnierid, $param['itemid']);
+					echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), Text::_('PLAYERSLIST'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Runden
@@ -92,12 +95,12 @@ foreach ($turData as $value) {
 				
 				// alle Matches
 				if ($param['linkmatchescomplete'] == 1) {
-					echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), JText::_('MATCHESCOMPLETE'), $view, $turnierid, $param['itemid']);
+					echo modCLM_TurnierHelper::makeLink('turnier_paarungsliste', $value->id, array(), Text::_('MATCHESCOMPLETE'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Tabelle
 				if ($param['linktable'] == 1 AND $value->typ != 3) {
-					echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), JText::_('TABLE'), $view, $turnierid, $param['itemid']);
+					echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), Text::_('TABLE'), $view, $turnierid, $param['itemid']);
 				}
 				
 				
@@ -106,9 +109,9 @@ foreach ($turData as $value) {
 					if (strlen($value->stringRankingScore) > 0) {
 						$text = $value->stringRankingScore;
 					} elseif ($value->typ == 1) {
-						$text = JText::_('RANKING');
+						$text = Text::_('RANKING');
 					} elseif ($value->typ > 1) {
-						$text = JText::_('SCOREBOARD');
+						$text = Text::_('SCOREBOARD');
 					}
 					echo modCLM_TurnierHelper::makeLink('turnier_rangliste', $value->id, array($str_rsorderby), $text, $view, $turnierid, $param['itemid']);
 				}
@@ -120,14 +123,14 @@ foreach ($turData as $value) {
 					if(!$table->isNew()) {
 						$parameter = new clm_class_params($table->params);
 						if($parameter->get("inofDWZ","0") == 1) {
-							echo modCLM_TurnierHelper::makeLink('turnier_dwz', $value->id, array(), JText::_('DWZ'), $view, $turnierid, $param['itemid']);
+							echo modCLM_TurnierHelper::makeLink('turnier_dwz', $value->id, array(), Text::_('DWZ'), $view, $turnierid, $param['itemid']);
 						}
 					}
 				}
 
 				// Ausschreibung
 				if ($param['linkinvitation'] == 1 AND $value->invitationLength > 0) {
-					echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array($str_rsorderby), JText::_('INVITATION'), $view, $turnierid, $param['itemid']);
+					echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array($str_rsorderby), Text::_('INVITATION'), $view, $turnierid, $param['itemid']);
 				}
 				
 				// Bemerkungen
@@ -139,7 +142,7 @@ foreach ($turData as $value) {
 	
 	
 		} else { // nicht veröffentlicht
-			echo '<ul><li><span>'.JText::_('UNPUBLISHED').'</span></li></ul>';
+			echo '<ul><li><span>'.Text::_('UNPUBLISHED').'</span></li></ul>';
 		}
 	
 	}
