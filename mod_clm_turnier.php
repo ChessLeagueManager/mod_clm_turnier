@@ -38,6 +38,7 @@ $param['linkdwz'] = $params->get('linkdwz', 0);
 
 $param['shownotes'] = $params->get('shownotes', 0);
 $param['linkinvitation'] = $params->get('linkinvitation', 0);
+$param['linkregistration'] = $params->get('linkregistration', 0);
 $param['contentid'] = $params->get('contentid', '');
 $param['textbottom'] = $params->get('textbottom', '');
 $param['itemid'] = $params->get('itemid', '');

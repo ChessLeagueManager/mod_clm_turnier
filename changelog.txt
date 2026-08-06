@@ -13,6 +13,9 @@ $ -> Language fix or change
 - -> Removed
 ! -> Note
 
+- - - - - 5.1.0 - [29-07-2026] - - - - - - - - - - - - - - - - - - - -
++ Zusätzlicher Parameter Link Online-Anmeldung
+
 - - - - - 5.0.0 - [11-04-2026] - - - - - - - - - - - - - - - - - - - -
 ^ Anpassung Joomla 6
 

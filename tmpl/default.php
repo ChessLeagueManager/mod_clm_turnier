@@ -65,6 +65,9 @@ foreach ($turData as $value) {
 		case 6: // Tabelle
 			echo modCLM_TurnierHelper::makeLink('turnier_tabelle', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
+		case 7: // Online-Anmeldung
+			echo modCLM_TurnierHelper::makeLink('turnier_registration', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
+			break;
 		case 4: // Turnier-Info
 		default:
 			echo modCLM_TurnierHelper::makeLink('turnier_info', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
@@ -131,6 +134,14 @@ foreach ($turData as $value) {
 				// Ausschreibung
 				if ($param['linkinvitation'] == 1 AND $value->invitationLength > 0) {
 					echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array($str_rsorderby), Text::_('INVITATION'), $view, $turnierid, $param['itemid']);
+				}
+				
+				// Online-Anmeldung
+				if ($param['linkregistration'] == 1) {
+					$today = date("Y-m-d");
+					if (isset($value->dateRegistration) AND $value->dateRegistration >= $today)  { // Online Anmeldung vorgesehen?
+						echo modCLM_TurnierHelper::makeLink('turnier_registration', $value->id, array($str_rsorderby), Text::_('REGISTRATION'), $view, $turnierid, $param['itemid']);
+					}
 				}
 				
 				// Bemerkungen
