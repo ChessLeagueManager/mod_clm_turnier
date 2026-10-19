@@ -2,12 +2,12 @@
 <extension type="module" version="4.0.0" client="site" method="upgrade">
 	<name>CLM Modul Turnier</name>
 	<author>Helge Frowein</author>
-	<creationDate>29.07.2026</creationDate>
+	<creationDate>15.08.2026</creationDate>
 	<copyright>This extension in released under the GNU/GPL License - http://www.gnu.org/copyleft/gpl.html</copyright>
 	<license>GNU/GPL</license>
 	<authorEmail>helge-frowein@online.de</authorEmail>
 	<authorUrl>www.chessleaguemanager.de</authorUrl>
-	<version>5.1.0</version>
+	<version>5.1.1</version>
 	<description>CLM_MODULE_TURNIER_DESCRIPTION</description>
 
 	<files>
@@ -44,9 +44,15 @@
 					<option value="6">NAMELINKSTO_6</option>
 					<option value="5">NAMELINKSTO_5</option>
 					<option value="7">NAMELINKSTO_7</option>
+					<option value="8">NAMELINKSTO_8</option>
 				</field>
 				<field name="@spacer" type="spacer" default="" label="" description="" />
 				<field name="linkplayerslist" type="radio" default="1" label="LINKPLAYERSLIST" description="LINKPLAYERSLIST_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				<field name="linkplayerslist" type="radio" default="1" label="LINKWAITINGLIST" description="LINKWAITINGLIST_DESC">
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>

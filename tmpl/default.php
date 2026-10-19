@@ -59,6 +59,9 @@ foreach ($turData as $value) {
 		case 0: // TlnLIste
 			echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
+		case 8: // Warteliste
+			echo modCLM_TurnierHelper::makeLink('turnier_waitlist', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
+			break;
 		case 5: // Ausschreibung
 			echo modCLM_TurnierHelper::makeLink('turnier_invitation', $value->id, array(), $value->name, $view, $turnierid, $param['itemid']);
 			break;
@@ -86,6 +89,13 @@ foreach ($turData as $value) {
 				// Teilnehmerliste
 				if ($param['linkplayerslist'] == 1) {
 					echo modCLM_TurnierHelper::makeLink('turnier_teilnehmer', $value->id, array(), Text::_('PLAYERSLIST'), $view, $turnierid, $param['itemid']);
+				}
+				
+				// Warteliste
+				if ($param['linkwaitinglist'] == 1) {
+					if (isset($value->waitingList) AND $value->waitingList == '1')  { // Warteliste vorgesehen?
+						echo modCLM_TurnierHelper::makeLink('turnier_waitlist', $value->id, array(), Text::_('WAITINGLIST'), $view, $turnierid, $param['itemid']);
+					}
 				}
 				
 				// Runden

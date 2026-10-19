@@ -28,6 +28,7 @@ $param['seasonid'] = $params->get('seasonid', '');
 $param['turnierid'] = $params->get('turnierid', array());
 
 $param['linkplayerslist'] = $params->get('linkplayerslist', 1);
+$param['linkwaitinglist'] = $params->get('linkwaitinglist', 1);
 $param['linkroundseach'] = $params->get('linkroundseach', 0);
 $param['showunpublishedrounds'] = $params->get('showunpublishedrounds', 0);
 $param['linkmatchescomplete'] = $params->get('linkmatchescomplete', 0);
@@ -140,6 +141,9 @@ if (count($arrayTurniere) > 0) {
 			$db->setQuery($query);
 			if ($temp = $db->loadObject()) {
 				$turData[$value] = $temp;
+				$turParams = new clm_class_params($turData[$value]->params);
+				$param_waitingList = $turParams->get('waitingList', 0);
+				$turData[$value]->waitingList = $param_waitingList;
 			
 				$counter++; // Turnier existent!
 			
